@@ -47,10 +47,13 @@ public class EditorPersona extends JFrame {
                 String telefono = telefonoField.getText();
                 int eta = Integer.parseInt(etaField.getText());
 
+
                 if(persona != null){
-                    listaPersone.modificaPersona(persona, nome, cognome, indirizzo, telefono, eta);
+                    Long id = persona.getId();
+                    listaPersone.modificaPersona(id, nome, cognome, indirizzo, telefono, eta);
                 } else {
-                    listaPersone.aggiungiPersona(new Persona(nome, cognome, indirizzo, telefono, eta));
+                    Long id = (long) (listaPersone.getListaPersone().size() + 1);
+                    listaPersone.aggiungiPersona(new Persona(id, nome, cognome, indirizzo, telefono, eta));
                 }
                 dispose();
             }

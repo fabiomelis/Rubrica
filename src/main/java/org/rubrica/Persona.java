@@ -1,18 +1,32 @@
 package org.rubrica;
 
-class Persona {
+
+
+public class Persona {
+    private long id;
     private String nome;
     private String cognome;
     private String indirizzo;
     private String telefono;
     private int eta;
 
-    public Persona(String nome, String cognome, String indirizzo, String telefono, int eta) {
+    // Costruttore con tutti i campi tranne l'ID
+    public Persona(Long id, String nome, String cognome, String indirizzo, String telefono, int eta) {
+        this.id = id;
         this.nome = nome;
         this.cognome = cognome;
         this.indirizzo = indirizzo;
         this.telefono = telefono;
         this.eta = eta;
+    }
+
+    // Getters e setters per tutti i campi, incluso l'ID
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getNome() {
@@ -54,5 +68,4 @@ class Persona {
     public void setEta(int eta) {
         this.eta = eta;
     }
-
 }

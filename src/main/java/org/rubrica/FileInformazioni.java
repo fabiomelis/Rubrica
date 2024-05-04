@@ -1,3 +1,4 @@
+/*
 package org.rubrica;
 
 import java.io.*;
@@ -16,13 +17,14 @@ public class FileInformazioni {
             while (scanner.hasNextLine()) {
                 String line = scanner.nextLine();
                 String[] parts = line.split(";");
+
                 String nome = parts[0];
                 String cognome = parts[1];
                 String indirizzo = parts[2];
                 String telefono = parts[3];
                 int eta = Integer.parseInt(parts[4]);
 
-                rubrica.aggiungiPersona(new Persona(nome, cognome, indirizzo, telefono, eta));
+                rubrica.aggiungiPersona(new Persona( nome, cognome, indirizzo, telefono, eta));
             }
         } catch (FileNotFoundException e) {
 
@@ -46,5 +48,5 @@ public class FileInformazioni {
     }
 
 }
-
+*/
 

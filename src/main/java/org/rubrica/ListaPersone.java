@@ -1,28 +1,71 @@
 package org.rubrica;
 
+import java.sql.SQLException;
 import java.util.Vector;
 
 public class ListaPersone {
     private Vector<Persona> listaPersone = new Vector<>();
 
+    public ListaPersone() {
+        caricaPersoneDalDatabase();
+    }
+
+    private void caricaPersoneDalDatabase() {
+        try {
+            PersonaDAO personaDAO = new PersonaDAO();
+            listaPersone = personaDAO.leggiPersone();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+
     public Vector<Persona> getListaPersone() {
+
+        caricaPersoneDalDatabase();
+
         return listaPersone;
     }
 
     public void aggiungiPersona(Persona persona) {
-        listaPersone.add(persona);
+        try {
+            PersonaDAO personaDAO = new PersonaDAO();
+            personaDAO.inserisciPersona(persona);
+            //listaPersone.add(persona);
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
     }
 
-    public void rimuoviPersona(Persona persona) {
-        listaPersone.remove(persona);
+    public void rimuoviPersona(Long id) {
+        try {
+            PersonaDAO personaDAO = new PersonaDAO();
+            personaDAO.eliminaPersona(id);
+            //listaPersone.remove(id);
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
     }
 
-    public void modificaPersona(Persona persona, String nome, String cognome, String indirizzo, String telefono, int eta) {
-        persona.setNome(nome);
-        persona.setCognome(cognome);
-        persona.setIndirizzo(indirizzo);
-        persona.setTelefono(telefono);
-        persona.setEta(eta);
+    public void modificaPersona(Long id, String nome, String cognome, String indirizzo, String telefono, int eta) {
+        try {
+            PersonaDAO personaDAO = new PersonaDAO();
+            personaDAO.modificaPersona(id, nome, cognome, indirizzo, telefono, eta);
+
+            /*
+            persona.setId(id);
+            persona.setNome(nome);
+            persona.setCognome(cognome);
+            persona.setIndirizzo(indirizzo);
+            persona.setTelefono(telefono);
+            persona.setEta(eta);
+
+             */
+
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
     }
 
 }

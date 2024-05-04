@@ -46,7 +46,7 @@ public class Rubrica extends JFrame{
                     @Override
                     public void windowClosed(WindowEvent e) {
                         aggiornaRubrica();
-                        FileInformazioni.salvaRubrica(listaPersone);
+                        //FileInformazioni.salvaRubrica(listaPersone);
                     }
                 });
                 editor.setVisible(true);
@@ -71,9 +71,10 @@ public class Rubrica extends JFrame{
                         @Override
                         public void windowClosed(WindowEvent e) {
                             aggiornaRubrica();
-                            FileInformazioni.salvaRubrica(listaPersone);
+                            //FileInformazioni.salvaRubrica(listaPersone);
                         }
                     });
+
 
                     editor.setVisible(true);
                 }
@@ -91,13 +92,15 @@ public class Rubrica extends JFrame{
                 } else {
 
                     Persona personaSelezionata = listaPersone.getListaPersone().elementAt(rigaSelezionata);
+                    System.out.println(personaSelezionata);
 
                     int conferma = JOptionPane.showConfirmDialog(Rubrica.this, "Eliminare la persona " + personaSelezionata.getNome() + " " + personaSelezionata.getCognome() + "?", "Conferma", JOptionPane.YES_NO_OPTION);
                     if (conferma == JOptionPane.YES_OPTION) {
-                        listaPersone.rimuoviPersona(personaSelezionata);
+                        listaPersone.rimuoviPersona(personaSelezionata.getId());
+                        System.out.println(personaSelezionata.getId());
 
                         aggiornaRubrica();
-                        FileInformazioni.salvaRubrica(listaPersone);
+                        //FileInformazioni.salvaRubrica(listaPersone);
                     }
                 }
             }
@@ -126,7 +129,11 @@ public class Rubrica extends JFrame{
     }
 
     private void aggiornaRubrica() {
+
+        ListaPersone listaPersone = new ListaPersone();
+
         Vector<Persona> persone = listaPersone.getListaPersone();
+
         String[] colonne = {"Nome", "Cognome", "Telefono"};
         Object[][] dati = new Object[persone.size()][3];
         for (int i = 0; i < persone.size(); i++) {
