@@ -1,0 +1,10 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Rubrica:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/Rubrica_jar</output-path>
+    <root id="archive" name="Rubrica.jar">
+      <element id="module-output" name="Rubrica" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../../../../../mysql-connector-j-8.4.0.jar" path-in-jar="/" />
+      <element id="library" level="project" name="mysql-connector-j-8.4.0" />
+    </root>
+  </artifact>
+</component>
