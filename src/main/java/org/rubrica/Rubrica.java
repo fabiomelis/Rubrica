@@ -7,9 +7,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.PrintStream;
 import java.util.Vector;
 
 public class Rubrica extends JFrame{
@@ -24,7 +21,6 @@ public class Rubrica extends JFrame{
 
         super("Rubrica Telefonica");
         this.listaPersone = listaPersone;
-        this.persona = persona;
 
         setLayout(new BorderLayout());
 
@@ -46,7 +42,7 @@ public class Rubrica extends JFrame{
                     @Override
                     public void windowClosed(WindowEvent e) {
                         aggiornaRubrica();
-                        //FileInformazioni.salvaRubrica(listaPersone);
+
                     }
                 });
                 editor.setVisible(true);
@@ -71,7 +67,7 @@ public class Rubrica extends JFrame{
                         @Override
                         public void windowClosed(WindowEvent e) {
                             aggiornaRubrica();
-                            //FileInformazioni.salvaRubrica(listaPersone);
+
                         }
                     });
 
@@ -92,15 +88,13 @@ public class Rubrica extends JFrame{
                 } else {
 
                     Persona personaSelezionata = listaPersone.getListaPersone().elementAt(rigaSelezionata);
-                    System.out.println(personaSelezionata);
 
                     int conferma = JOptionPane.showConfirmDialog(Rubrica.this, "Eliminare la persona " + personaSelezionata.getNome() + " " + personaSelezionata.getCognome() + "?", "Conferma", JOptionPane.YES_NO_OPTION);
                     if (conferma == JOptionPane.YES_OPTION) {
                         listaPersone.rimuoviPersona(personaSelezionata.getId());
-                        System.out.println(personaSelezionata.getId());
 
                         aggiornaRubrica();
-                        //FileInformazioni.salvaRubrica(listaPersone);
+
                     }
                 }
             }

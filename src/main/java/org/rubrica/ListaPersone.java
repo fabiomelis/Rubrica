@@ -31,7 +31,6 @@ public class ListaPersone {
         try {
             PersonaDAO personaDAO = new PersonaDAO();
             personaDAO.inserisciPersona(persona);
-            //listaPersone.add(persona);
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
@@ -41,7 +40,6 @@ public class ListaPersone {
         try {
             PersonaDAO personaDAO = new PersonaDAO();
             personaDAO.eliminaPersona(id);
-            //listaPersone.remove(id);
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
@@ -51,17 +49,6 @@ public class ListaPersone {
         try {
             PersonaDAO personaDAO = new PersonaDAO();
             personaDAO.modificaPersona(id, nome, cognome, indirizzo, telefono, eta);
-
-            /*
-            persona.setId(id);
-            persona.setNome(nome);
-            persona.setCognome(cognome);
-            persona.setIndirizzo(indirizzo);
-            persona.setTelefono(telefono);
-            persona.setEta(eta);
-
-             */
-
 
         } catch (SQLException ex) {
             ex.printStackTrace();

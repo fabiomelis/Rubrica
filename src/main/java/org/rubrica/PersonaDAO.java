@@ -4,33 +4,29 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Vector;
 
 public class PersonaDAO {
 
     public void inserisciPersona(Persona persona) throws SQLException {
-        // Ottieni una connessione al database
+
         Connection connection = DatabaseConnection.getConnection();
 
         String sql = "INSERT INTO persona (nome, cognome, indirizzo, telefono, eta) VALUES (?, ?, ?, ?, ?)";
 
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
-            // Imposta i valori dei parametri della query
+
             statement.setString(1, persona.getNome());
             statement.setString(2, persona.getCognome());
             statement.setString(3, persona.getIndirizzo());
             statement.setString(4, persona.getTelefono());
             statement.setInt(5, persona.getEta());
 
-            // Esegui l'inserimento
             statement.executeUpdate();
         }
     }
 
 
-    // Metodo per leggere tutte le persone
     public static Vector<Persona> leggiPersone() throws SQLException {
         Vector<Persona> persone = new Vector<>();
         Connection conn = null;
@@ -57,7 +53,7 @@ public class PersonaDAO {
                 persone.add(persona);
             }
         } finally {
-            // Chiudi le risorse
+
             if (rs != null) rs.close();
             if (stmt != null) stmt.close();
             if (conn != null) conn.close();
@@ -66,7 +62,6 @@ public class PersonaDAO {
         return persone;
     }
 
-    // Metodo per aggiornare i dettagli di una persona esistente
     public void modificaPersona(Long id, String nome, String cognome, String indirizzo, String telefono, int eta) throws SQLException {
         Connection connection = null;
         PreparedStatement statement = null;
@@ -83,7 +78,7 @@ public class PersonaDAO {
             statement.setLong(6, id);
             statement.executeUpdate();
         } finally {
-            // Chiudi le risorse
+
             if (statement != null) {
                 statement.close();
             }
@@ -94,7 +89,7 @@ public class PersonaDAO {
     }
 
 
-    // Metodo per eliminare una persona in base all'ID
+
     public void eliminaPersona(long id) throws SQLException {
         String sql = "DELETE FROM persona WHERE id = ?";
         try (Connection connection = DatabaseConnection.getConnection();

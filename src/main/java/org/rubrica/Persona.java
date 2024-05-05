@@ -10,7 +10,7 @@ public class Persona {
     private String telefono;
     private int eta;
 
-    // Costruttore con tutti i campi tranne l'ID
+
     public Persona(Long id, String nome, String cognome, String indirizzo, String telefono, int eta) {
         this.id = id;
         this.nome = nome;
@@ -20,7 +20,7 @@ public class Persona {
         this.eta = eta;
     }
 
-    // Getters e setters per tutti i campi, incluso l'ID
+
     public long getId() {
         return id;
     }

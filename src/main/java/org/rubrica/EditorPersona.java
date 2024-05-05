@@ -7,13 +7,12 @@ import java.awt.event.*;
 public class EditorPersona extends JFrame {
     private JTextField nomeField, cognomeField, indirizzoField, telefonoField, etaField;
     private ListaPersone listaPersone;
-    private Rubrica rubrica;
     private Persona persona;
 
     public EditorPersona(ListaPersone listaPersone, Persona persona) {
         super("Editor Persona");
         this.listaPersone = listaPersone;
-        this.rubrica = rubrica;
+        this.persona = persona;
 
         setLayout(new GridLayout(6, 2));
 
@@ -68,7 +67,6 @@ public class EditorPersona extends JFrame {
             }
         });
 
-        // Aggiungi componenti alla finestra
         add(nomeLabel);
         add(nomeField);
         add(cognomeLabel);
